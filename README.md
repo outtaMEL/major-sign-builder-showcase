@@ -1,32 +1,37 @@
 # Major Sign Builder
 
-**Exploring a more direct guide-sign design workflow from a road engineer's experience.**
+**A road-sign design prototype connecting text, arrow geometry and board layout with CAD export.**
 
-Engineering product prototype by Fan Niu. My contribution centres on identifying the workflow problem, product direction, requirements and iterative review; implementation was primarily completed with AI assistance.
+**[Watch the 1:03 product demo on YouTube →](https://www.youtube.com/watch?v=1EWgh93NGWQ)**
 
-[Try the online editor](https://major-sign-builder.vercel.app/trial)
+Follow a sample sign through layout revisions, arrow editing and DXF export, ending with the result opened in CAD.
 
-The anonymous trial supports editing. Saving and exporting require access beyond trial mode.
+[![Major Sign Builder sample sign — click to watch the product demo](assets/board-configuration.jpg)](https://www.youtube.com/watch?v=1EWgh93NGWQ)
 
-![A sample guide sign with board dimensions and geometry controls](assets/board-configuration.jpg)
-
-*A sample sign shown with physical dimensions, border settings, corner geometry and panel styling.*
+*The editor combines a sign preview with physical dimensions, border settings and panel styling. Click the image to watch the demo.*
 
 ## Why I built it
 
 While working as a road engineer, I found sign design conceptually straightforward: arranging geometry, text and spacing. The AutoCAD plug-ins I used made revisions cumbersome. A local change could affect other parts of the layout and create substantial rework.
 
-After discovering what AI-assisted coding could help me build, I explored whether a dedicated browser editor could make the process more direct, connecting element editing, parameter adjustments, previews and CAD handoff.
+I explored whether a dedicated browser editor could make that workflow more direct: edit the content and geometry, inspect the board, then carry the design into CAD.
 
-## The product response
+## From layout to CAD
 
-The project grew from an arrow-building prototype into a broader sign-layout workspace. It combines text, graphical elements, panels and board configuration, using millimetres for geometry and selected AS 1742/1743-related layout rules.
+1. **Build the sign content.** Combine route numbers, road names, destinations and graphical elements.
+2. **Revise the design.** Adjust text, arrow geometry, element placement and panels in the browser.
+3. **Configure the board.** Review dimensions, borders, corner geometry and panel styling.
+4. **Continue in CAD.** Export the layout as DXF for further work outside the editor.
 
 ![A placed text group selected on the editing canvas](assets/element-layout.jpg)
 
-*The editor represents sign content as selectable elements on a layout canvas.*
+*Sign content remains selectable on the canvas, with the text group and its layout controls visible together.*
 
-The CAD export implementation includes line and arc entities for arrow geometry, together with text and layer handling. The product aim is a design that remains useful for continued work in CAD after leaving the browser.
+## Design choice: preserve the CAD handoff
+
+A browser preview is only part of the engineering workflow. The design also needs to remain useful after export.
+
+The prototype uses millimetres for geometry and selected AS 1742/1743-related layout rules. Its DXF implementation includes line and arc entities for arrow geometry, together with text and layer handling, so the handoff retains drawing structure rather than only a rendered image.
 
 ## Feedback from industry
 
@@ -35,10 +40,12 @@ I demonstrated the prototype to a friend working in the industry. Two concrete r
 - Point-to-point snapping between elements, followed by numerical distance entry for precise placement.
 - Separate CAD layers for different elements, to support downstream organisation and editing.
 
-This feedback supplied specific requirements for reviewing both placement interactions and the exported file. These are recorded here as feedback received.
+These requests highlighted two practical requirements: precise placement inside the editor and control over the drawing structure after export.
 
-## Industry exploration and current stage
+## My role and project stage
 
-I also explored commercialisation and tried to interest industry practitioners in the product. Those contacts did not develop into an ongoing commercial project, and I did not carry the commercial effort forward. The project remains available as a functional prototype.
+I identified the workflow problem through my road-engineering experience, set the product direction and requirements, and reviewed iterations. Implementation was primarily completed with AI assistance. The project grew from an arrow-building prototype into a broader sign-layout workspace.
 
-The editor uses React and TypeScript, with geometry and DXF export modules. The wider application includes Supabase-related authentication and storage code and subscription integrations.
+I also explored commercialisation and approached industry practitioners. Those contacts did not develop into an ongoing commercial project, and I did not carry the commercial effort forward. This case presents the engineering product prototype and its early industry feedback.
+
+**Project stack:** React, TypeScript, geometry and DXF export modules; the wider application includes Supabase authentication and storage code and subscription integrations.
